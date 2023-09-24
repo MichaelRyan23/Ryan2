@@ -20,8 +20,11 @@ class List {
         List() {
             front = nullptr;
         }
+
         List( const List & );
+
         ~List();
+
         void add(const Element);
         void remove(const Element);
         void view() const;
