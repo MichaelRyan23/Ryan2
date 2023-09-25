@@ -5,7 +5,12 @@
 *** DUE DATE   : 9-25-2023
 *** INSTRUCTOR : GAMRADT
 *********************************************************************
-*** DESCRIPTION : <detailed english description of the current assignment>
+*** DESCRIPTION : This program lets you create a user-defined single-linked-list
+*** that can be manipulated by: an add method, which adds an element
+*** to a linked list object. A remove method, which removes whatever user-defined
+*** element from the linked list object.
+*** You are also able to view every element in the list using the view method,
+*** and you can make copies of list
 ********************************************************************/             
 #include <iostream>
 #include "List.h"
