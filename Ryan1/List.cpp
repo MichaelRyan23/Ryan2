@@ -134,13 +134,16 @@ void List::add(const Element num)
 }
 
 /********************************************************************
-*** FUNCTION destructor (List)
+*** FUNCTION remove
 *********************************************************************
-*** DESCRIPTION : <detailed english description of the function> ***
-*** INPUT ARGS  : <list of all input argument names> ***
-*** OUTPUT ARGS : <list of all output argument names> ***
-*** IN/OUT ARGS : <list of all input/output argument names> 
-*** RETURN      : <return type and return value name> 
+*** DESCRIPTION : Removes a node with a specified value from the linked list
+*** Takes an input parameter and basically checks each node until it finds 
+*** the desired element, in which case if it DOES find it, removes it from the list
+*** and if it DOESN't find it provides user feedback
+*** INPUT ARGS  : const Element num
+*** OUTPUT ARGS : 
+*** IN/OUT ARGS :
+*** RETURN      : void
 ********************************************************************/
 void List::remove(const Element num)
 {
@@ -179,13 +182,16 @@ void List::remove(const Element num)
 }
 
 /********************************************************************
-*** FUNCTION destructor (List)
+*** FUNCTION view
 *********************************************************************
-*** DESCRIPTION : <detailed english description of the function> ***
-*** INPUT ARGS  : <list of all input argument names> ***
-*** OUTPUT ARGS : <list of all output argument names> ***
-*** IN/OUT ARGS : <list of all input/output argument names> 
-*** RETURN      : <return type and return value name> 
+*** DESCRIPTION : Displays all elements of a linked list from the FRONT
+*** (beginning) to the END. A pointer traverses the list, and a cout
+*** operation carries out and prints the current element value of the node,
+*** then it moves forward and continues until the pointer is pointing at null
+*** INPUT ARGS  : 
+*** OUTPUT ARGS : 
+*** IN/OUT ARGS : 
+*** RETURN      : void
 ********************************************************************/
 void List::view() const
 {
