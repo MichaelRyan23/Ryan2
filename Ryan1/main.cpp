@@ -31,5 +31,27 @@ int main() {
     cout << "List 1: \n";
     list1.view();
 
+    cout << "\nAdding 17.38 to list1...\n\n";
+    list1.add(17.38);
+
+    cout << "List 1: \n";
+    list1.view();
+
+    cout << "\nRemoving 5 and 12 from the list\n\n";
+    list1.remove(5.0);
+    list1.remove(12.0);
+
+    cout << "List 1: \n";
+    list1.view();
+
+    // Creating the copy constructor
+    List list2(list1);
+
+    cout << "\nList 1: \n";
+    list1.view();
+
+    cout << "\nList 2: \n";
+    list2.view();
+
     return 0;
 }

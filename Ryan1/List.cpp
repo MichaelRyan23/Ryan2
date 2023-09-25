@@ -173,7 +173,7 @@ void List::remove(const Element num)
         }
         else
         {
-            cout << "\n\nThe value " << num << " does not exist in the list\n\n";
+            cout << "\nThe value " << num << " does not exist in the list\n\n";
         }
     }
 }
@@ -201,5 +201,5 @@ void List::view() const
 
         nodePtr = nodePtr->next;
     }
-    cout << "END";
+    cout << "END" << endl;
 }
