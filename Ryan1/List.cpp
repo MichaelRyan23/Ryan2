@@ -98,10 +98,14 @@ void List::add(const Element num)
     Node *previousNode = nullptr;
 
     newNode = new Node;
+    // newNode = new (std::nothrow) Node;
+
     if(newNode == nullptr) {
         cout << "Memory allocation error" << endl;
         return;
     }
+    // supposed to have an else here that carries everything else
+
     newNode->element = num;
 
     if(!front)
@@ -200,6 +204,9 @@ void List::view() const
     nodePtr = front;
 
     cout << "FRONT -> ";
+
+    
+    // cout << fixed << setprecision(2);
 
     while(nodePtr != nullptr)
     {
