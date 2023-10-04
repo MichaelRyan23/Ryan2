@@ -21,12 +21,20 @@ typedef Element * ElementPtr;
 class Stack {
     public:
 
+        explicit Stack(int size = 2);
+        Stack(Stack &old);
+        ~Stack();
 
+        void push(const Element &item);
+        Element pop();
+        Element peek();
+        void view();
 
     private:
 
-
-
+        const int STACK_SIZE;
+        ElementPtr stackArray;
+        int top;
 
 };
 
