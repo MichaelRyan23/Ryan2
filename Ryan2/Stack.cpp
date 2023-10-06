@@ -14,13 +14,15 @@
 using namespace std;
 
 /********************************************************************
-*** FUNCTION <name of function> ***
+*** FUNCTION constructor
 *********************************************************************
-*** DESCRIPTION : <detailed english description of the function> ***
-*** INPUT ARGS : <list of all input argument names> ***
-*** OUTPUT ARGS : <list of all output argument names> ***
-*** IN/OUT ARGS : <list of all input/output argument names> ***
-*** RETURN : <return type and return value name> ***
+*** DESCRIPTION : Default and parameterized constructor. It initializes
+*** an array of elements of the given size (default size 2) and sets the
+*** top value to -1 which indicates an empty stack
+*** INPUT ARGS : size
+*** OUTPUT ARGS : 
+*** IN/OUT ARGS : 
+*** RETURN :
 ********************************************************************/
 Stack::Stack(const int size): STACK_SIZE(size), top(-1) {
 
@@ -34,13 +36,15 @@ Stack::Stack(const int size): STACK_SIZE(size), top(-1) {
 }
 
 /********************************************************************
-*** FUNCTION <name of function> ***
+*** FUNCTION copy constructor
 *********************************************************************
-*** DESCRIPTION : <detailed english description of the function> ***
-*** INPUT ARGS : <list of all input argument names> ***
-*** OUTPUT ARGS : <list of all output argument names> ***
-*** IN/OUT ARGS : <list of all input/output argument names> ***
-*** RETURN : <return type and return value name> ***
+*** DESCRIPTION : Copy constructor creates a new stack object from an
+*** already existing one. Through push and pull manipulation, the new 
+*** stack will have the same order of elements as the old one.
+*** INPUT ARGS : old
+*** OUTPUT ARGS : 
+*** IN/OUT ARGS : old (technically because it's modified?)
+*** RETURN :
 ********************************************************************/
 Stack::Stack(Stack &old): STACK_SIZE(old.STACK_SIZE), top(-1) {
 
@@ -68,13 +72,15 @@ Stack::Stack(Stack &old): STACK_SIZE(old.STACK_SIZE), top(-1) {
 }
 
 /********************************************************************
-*** FUNCTION <name of function> ***
+*** FUNCTION destructor
 *********************************************************************
-*** DESCRIPTION : <detailed english description of the function> ***
-*** INPUT ARGS : <list of all input argument names> ***
-*** OUTPUT ARGS : <list of all output argument names> ***
-*** IN/OUT ARGS : <list of all input/output argument names> ***
-*** RETURN : <return type and return value name> ***
+*** DESCRIPTION : Destructor de-allocates memory and ensures proper 
+*** data clean up by popping all the elements from the stack and deleting
+*** the allocated memory.
+*** INPUT ARGS : 
+*** OUTPUT ARGS : 
+*** IN/OUT ARGS : 
+*** RETURN : 
 ********************************************************************/
 Stack::~Stack() {
     while(top != -1) {
@@ -84,13 +90,15 @@ Stack::~Stack() {
 }
 
 /********************************************************************
-*** FUNCTION <name of function> ***
+*** FUNCTION push
 *********************************************************************
-*** DESCRIPTION : <detailed english description of the function> ***
-*** INPUT ARGS : <list of all input argument names> ***
-*** OUTPUT ARGS : <list of all output argument names> ***
-*** IN/OUT ARGS : <list of all input/output argument names> ***
-*** RETURN : <return type and return value name> ***
+*** DESCRIPTION : Push's job is to push a new element into the stack.
+*** It checks if the stack is full, if not then the element is added
+*** to the top of the stack and 'top' is incremented.
+*** INPUT ARGS : item
+*** OUTPUT ARGS : 
+*** IN/OUT ARGS :
+*** RETURN : void
 ********************************************************************/
 void Stack::push(const Element item) {
     if(top == STACK_SIZE - 1) {
@@ -102,13 +110,15 @@ void Stack::push(const Element item) {
 }
 
 /********************************************************************
-*** FUNCTION <name of function> ***
+*** FUNCTION pop
 *********************************************************************
-*** DESCRIPTION : <detailed english description of the function> ***
-*** INPUT ARGS : <list of all input argument names> ***
-*** OUTPUT ARGS : <list of all output argument names> ***
-*** IN/OUT ARGS : <list of all input/output argument names> ***
-*** RETURN : <return type and return value name> ***
+*** DESCRIPTION : Pop's job is to remove the top element from the stack.
+*** It checks if the stack is empty, if not then the function returns
+*** the top-most element of the stack and decrements 'top' in stack.
+*** INPUT ARGS : 
+*** OUTPUT ARGS : 
+*** IN/OUT ARGS : 
+*** RETURN : Element
 ********************************************************************/
 Element Stack::pop() {
     if (top == -1) {
@@ -120,13 +130,15 @@ Element Stack::pop() {
 }
 
 /********************************************************************
-*** FUNCTION <name of function> ***
+*** FUNCTION peek
 *********************************************************************
-*** DESCRIPTION : <detailed english description of the function> ***
-*** INPUT ARGS : <list of all input argument names> ***
-*** OUTPUT ARGS : <list of all output argument names> ***
-*** IN/OUT ARGS : <list of all input/output argument names> ***
-*** RETURN : <return type and return value name> ***
+*** DESCRIPTION : Peek's job is to check if the stack is empty and if it's
+*** not, it pops the top element into a temporary Element value, pushes
+*** it back into the stack, and returns the topmost element.
+*** INPUT ARGS : 
+*** OUTPUT ARGS : 
+*** IN/OUT ARGS : 
+*** RETURN : Element
 ********************************************************************/
 Element Stack::peek() {
 
@@ -140,13 +152,17 @@ Element Stack::peek() {
 }
 
 /********************************************************************
-*** FUNCTION <name of function> ***
+*** FUNCTION view
 *********************************************************************
-*** DESCRIPTION : <detailed english description of the function> ***
-*** INPUT ARGS : <list of all input argument names> ***
-*** OUTPUT ARGS : <list of all output argument names> ***
-*** IN/OUT ARGS : <list of all input/output argument names> ***
-*** RETURN : <return type and return value name> ***
+*** DESCRIPTION : View's job is to display the stack's contents from top
+*** to bottom. It has a special case check to see if it's empty, then it
+*** pops each element from the original stack, displaying them, and pushes
+*** them into a temporary stack. The process is repeated for the temporary
+*** stack back into the original stack to ensure the order stays correct.
+*** INPUT ARGS : 
+*** OUTPUT ARGS : 
+*** IN/OUT ARGS : 
+*** RETURN : void
 ********************************************************************/
 void Stack::view() {
 
