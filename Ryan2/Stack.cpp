@@ -13,7 +13,15 @@
 #include "Stack.h"
 using namespace std;
 
-// default and parameterized constructor
+/********************************************************************
+*** FUNCTION <name of function> ***
+*********************************************************************
+*** DESCRIPTION : <detailed english description of the function> ***
+*** INPUT ARGS : <list of all input argument names> ***
+*** OUTPUT ARGS : <list of all output argument names> ***
+*** IN/OUT ARGS : <list of all input/output argument names> ***
+*** RETURN : <return type and return value name> ***
+********************************************************************/
 Stack::Stack(const int size): STACK_SIZE(size), top(-1) {
 
     stackArray = new (std::nothrow) Element[STACK_SIZE];
@@ -25,32 +33,49 @@ Stack::Stack(const int size): STACK_SIZE(size), top(-1) {
     
 }
 
-// Copy constructor
+/********************************************************************
+*** FUNCTION <name of function> ***
+*********************************************************************
+*** DESCRIPTION : <detailed english description of the function> ***
+*** INPUT ARGS : <list of all input argument names> ***
+*** OUTPUT ARGS : <list of all output argument names> ***
+*** IN/OUT ARGS : <list of all input/output argument names> ***
+*** RETURN : <return type and return value name> ***
+********************************************************************/
 Stack::Stack(Stack &old): STACK_SIZE(old.STACK_SIZE), top(-1) {
 
+    Stack tempArray(STACK_SIZE);
     stackArray = new (std::nothrow) Element[STACK_SIZE];
     
     if(stackArray == nullptr) {
         cout << "Memory allocation error" << endl;
         return;
     }
+
+    Element tempElement;
+
+    while(old.top != -1) {
+        tempElement = old.pop();
+        tempArray.push(tempElement);
+    }
+
+    while(tempArray.top != -1) {
+        tempElement = tempArray.pop();
+        push(tempElement);
+        old.push(tempElement);
+    }
     
-    ElementPtr tempArray = new (std::nothrow) Element[STACK_SIZE];
-    int tempTop = 0;
-
-    while(old.top != 1) {
-        tempArray[tempTop++] = old.pop();
-    }
-
-    for(int i = 0; i < tempTop; i++) {
-        old.push(tempArray[i]);
-        push(tempArray[i]);
-    }
-
-    delete[] tempArray;
 }
 
-// Destructor
+/********************************************************************
+*** FUNCTION <name of function> ***
+*********************************************************************
+*** DESCRIPTION : <detailed english description of the function> ***
+*** INPUT ARGS : <list of all input argument names> ***
+*** OUTPUT ARGS : <list of all output argument names> ***
+*** IN/OUT ARGS : <list of all input/output argument names> ***
+*** RETURN : <return type and return value name> ***
+********************************************************************/
 Stack::~Stack() {
     while(top != -1) {
         pop();
@@ -58,15 +83,33 @@ Stack::~Stack() {
     delete[] stackArray;
 }
 
+/********************************************************************
+*** FUNCTION <name of function> ***
+*********************************************************************
+*** DESCRIPTION : <detailed english description of the function> ***
+*** INPUT ARGS : <list of all input argument names> ***
+*** OUTPUT ARGS : <list of all output argument names> ***
+*** IN/OUT ARGS : <list of all input/output argument names> ***
+*** RETURN : <return type and return value name> ***
+********************************************************************/
 void Stack::push(const Element item) {
     if(top == STACK_SIZE - 1) {
-        cout << "Stack Overflow!" << endl;
+        cout << "Stack Overflow! Too many values in Stack!" << endl;
         return;
     }
     else
         stackArray[++top] = item;
 }
 
+/********************************************************************
+*** FUNCTION <name of function> ***
+*********************************************************************
+*** DESCRIPTION : <detailed english description of the function> ***
+*** INPUT ARGS : <list of all input argument names> ***
+*** OUTPUT ARGS : <list of all output argument names> ***
+*** IN/OUT ARGS : <list of all input/output argument names> ***
+*** RETURN : <return type and return value name> ***
+********************************************************************/
 Element Stack::pop() {
     if (top == -1) {
         cout << "Stack Underflow! Nothing to pop!" << endl;
@@ -76,18 +119,35 @@ Element Stack::pop() {
         return stackArray[top--];
 }
 
+/********************************************************************
+*** FUNCTION <name of function> ***
+*********************************************************************
+*** DESCRIPTION : <detailed english description of the function> ***
+*** INPUT ARGS : <list of all input argument names> ***
+*** OUTPUT ARGS : <list of all output argument names> ***
+*** IN/OUT ARGS : <list of all input/output argument names> ***
+*** RETURN : <return type and return value name> ***
+********************************************************************/
 Element Stack::peek() {
 
     if (top == -1) {
-        cout << "Stack Underflow!" << endl;
+        cout << "Stack Underflow! Nothing to peek at!" << endl;
         return "";
     }
     Element temp = pop();
     push(temp);
     return temp;
-
 }
 
+/********************************************************************
+*** FUNCTION <name of function> ***
+*********************************************************************
+*** DESCRIPTION : <detailed english description of the function> ***
+*** INPUT ARGS : <list of all input argument names> ***
+*** OUTPUT ARGS : <list of all output argument names> ***
+*** IN/OUT ARGS : <list of all input/output argument names> ***
+*** RETURN : <return type and return value name> ***
+********************************************************************/
 void Stack::view() {
 
     if(top == -1) {
@@ -95,23 +155,24 @@ void Stack::view() {
         return;
     }
 
-    ElementPtr tempArray = new (std::nothrow) Element[STACK_SIZE];
-    int tempTop = 0;
+    Stack tempStack(STACK_SIZE);
 
-    while(top != -1) {
-        tempArray[tempTop++] = pop();
-    }
+    Element tempElement;
 
     cout << "TOP -> ";
 
-    for(int i = 0; i < tempTop; i++) {
-        cout << tempArray[i] << " -> ";
-        push(tempArray[i]);
+    while(top != -1) {
+        tempElement = pop();
+        cout << tempElement << " -> ";
+        tempStack.push(tempElement);
     }
 
     cout << "BOTTOM" << endl;
 
-    delete[] tempArray;
+    while(tempStack.top != -1) {
+        tempElement = tempStack.pop();
+        push(tempElement);
+    }
 
 }
 
