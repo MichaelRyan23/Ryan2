@@ -1,12 +1,17 @@
 /********************************************************************
-*** NAME : Michael Ryan
-*** CLASS : CSc 300
-*** ASSIGNMENT : 2
-*** DUE DATE : 10 - 6 - 2023
-*** INSTRUCTOR : GAMRADT
+*** NAME        : Michael Ryan
+*** CLASS       : CSc 300
+*** ASSIGNMENT  : 2
+*** DUE DATE    : 10 - 6 - 2023
+*** INSTRUCTOR  : GAMRADT
 *********************************************************************
-*** DESCRIPTION : <detailed english description of the abstract data type> 
-*** <including supporting operations> 
+*** DESCRIPTION : The implemented 'Stack' ADT is a collection of elements
+*** with the First-in-last-out idea. The stack uses an array of strings
+*** (Element) to manage the items, and memory management is implemented
+*** throughout the whole program. The main operations that manipulate
+*** the values in the Stack Object are push (adding an element to the top)
+*** pull(removing the top element) peek(removing and seeing just the top)
+*** and view(displays the stack from top to bottom)
 ********************************************************************/
 
 #include <iostream>

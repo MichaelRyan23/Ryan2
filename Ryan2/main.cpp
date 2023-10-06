@@ -47,5 +47,10 @@ int main() {
 
     stack1.view();
 
+    stack1.pop();
+    stack1.pop();
+
+    stack1.view();
+
     return 0;
 }

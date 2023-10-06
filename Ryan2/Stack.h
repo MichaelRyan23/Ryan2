@@ -1,12 +1,13 @@
 /********************************************************************
-*** NAME : Michael Ryan
-*** CLASS : CSc 300
-*** ASSIGNMENT : 2
-*** DUE DATE : 10 - 6 - 2023
-*** INSTRUCTOR : GAMRADT
+*** NAME        : Michael Ryan
+*** CLASS       : CSc 300
+*** ASSIGNMENT  : 2
+*** DUE DATE    : 10 - 6 - 2023
+*** INSTRUCTOR  : GAMRADT
 *********************************************************************
-*** DESCRIPTION : <general english description of the abstract data type> 
-*** <including supporting operations>
+*** DESCRIPTION : A stack is a collection of elements that implements
+*** the First-in-last-out idea where the most recent element added(pushed)
+*** is the first one to be removed (popped). 
 ********************************************************************/
 
 #ifndef _STACK_H
@@ -22,10 +23,10 @@ class Stack {
     public:
 
 /********************************************************************
-*** FUNCTION <name of function> 
+*** FUNCTION constructor
 *********************************************************************
-*** DESCRIPTION : <general english description of the function> 
-*** INPUT ARGS : 
+*** DESCRIPTION : Initializes a new stack with a given or default size 
+*** INPUT ARGS : size
 *** OUTPUT ARGS : 
 *** IN/OUT ARGS : 
 *** RETURN : 
@@ -33,20 +34,21 @@ class Stack {
         explicit Stack(int size = 2);
 
 /********************************************************************
-*** FUNCTION <name of function> 
+*** FUNCTION copy constructor
 *********************************************************************
-*** DESCRIPTION : <general english description of the function> 
-*** INPUT ARGS : 
+*** DESCRIPTION : Creates a copy of an existing stack
+*** INPUT ARGS : old
 *** OUTPUT ARGS : 
-*** IN/OUT ARGS : 
+*** IN/OUT ARGS : old
 *** RETURN : 
 ********************************************************************/
         Stack(Stack &old);
 
 /********************************************************************
-*** FUNCTION <name of function> 
+*** FUNCTION destructor
 *********************************************************************
-*** DESCRIPTION : <general english description of the function> 
+*** DESCRIPTION : Cleans up the stack by going popping each element out
+*** and deletes (release) memory.
 *** INPUT ARGS : 
 *** OUTPUT ARGS : 
 *** IN/OUT ARGS : 
@@ -55,46 +57,47 @@ class Stack {
         ~Stack();
 
 /********************************************************************
-*** FUNCTION <name of function> 
+*** FUNCTION push
 *********************************************************************
-*** DESCRIPTION : <general english description of the function> 
-*** INPUT ARGS : 
+*** DESCRIPTION : Adds an element to the top of the stack
+*** INPUT ARGS : item
 *** OUTPUT ARGS : 
 *** IN/OUT ARGS : 
-*** RETURN : 
+*** RETURN : void
 ********************************************************************/
         void push(const Element item);
 
 /********************************************************************
-*** FUNCTION <name of function> 
+*** FUNCTION pop
 *********************************************************************
-*** DESCRIPTION : <general english description of the function> 
+*** DESCRIPTION : Removes and returns the top element of the stack.
 *** INPUT ARGS : 
 *** OUTPUT ARGS : 
 *** IN/OUT ARGS : 
-*** RETURN : 
+*** RETURN : Element
 ********************************************************************/
         Element pop();
 
 /********************************************************************
-*** FUNCTION <name of function> 
+*** FUNCTION peek
 *********************************************************************
-*** DESCRIPTION : <general english description of the function> 
+*** DESCRIPTION : Retrieves top element from stack and pushes it back in
+*** effectively returning top element.
 *** INPUT ARGS : 
 *** OUTPUT ARGS : 
 *** IN/OUT ARGS : 
-*** RETURN : 
+*** RETURN : Element
 ********************************************************************/
         Element peek();
 
 /********************************************************************
-*** FUNCTION <name of function> 
+*** FUNCTION view
 *********************************************************************
-*** DESCRIPTION : <general english description of the function> 
+*** DESCRIPTION : Displays the content of the stack from top to bottom.
 *** INPUT ARGS : 
 *** OUTPUT ARGS : 
 *** IN/OUT ARGS : 
-*** RETURN : 
+*** RETURN : void
 ********************************************************************/
         void view();
 
