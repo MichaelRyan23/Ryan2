@@ -25,7 +25,7 @@ class Stack {
         Stack(Stack &old);
         ~Stack();
 
-        void push(const Element &item);
+        void push(const Element item);
         Element pop();
         Element peek();
         void view();

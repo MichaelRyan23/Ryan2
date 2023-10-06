@@ -14,16 +14,40 @@
 using namespace std;
 
 // default and parameterized constructor
-Stack::Stack(const int size): STACK_SIZE(size) {
+Stack::Stack(const int size): STACK_SIZE(size), top(-1) {
+
     stackArray = new (std::nothrow) Element[STACK_SIZE];
+
+    if(stackArray == nullptr) {
+        cout << "Memory allocation error" << endl;
+        return;
+    }
     
 }
 
 // Copy constructor
 Stack::Stack(Stack &old): STACK_SIZE(old.STACK_SIZE), top(-1) {
-    stackArray = new Element[STACK_SIZE];
+
+    stackArray = new (std::nothrow) Element[STACK_SIZE];
     
-    Stack tempStack(STACK_SIZE);
+    if(stackArray == nullptr) {
+        cout << "Memory allocation error" << endl;
+        return;
+    }
+    
+    ElementPtr tempArray = new (std::nothrow) Element[STACK_SIZE];
+    int tempTop = 0;
+
+    while(old.top != 1) {
+        tempArray[tempTop++] = old.pop();
+    }
+
+    for(int i = 0; i < tempTop; i++) {
+        old.push(tempArray[i]);
+        push(tempArray[i]);
+    }
+
+    delete[] tempArray;
 }
 
 // Destructor
@@ -34,9 +58,9 @@ Stack::~Stack() {
     delete[] stackArray;
 }
 
-void Stack::push(const Element &item) {
+void Stack::push(const Element item) {
     if(top == STACK_SIZE - 1) {
-        cout << "Stack full!" << endl;
+        cout << "Stack Overflow!" << endl;
         return;
     }
     else
@@ -45,17 +69,49 @@ void Stack::push(const Element &item) {
 
 Element Stack::pop() {
     if (top == -1) {
-        cout << "Stack is empty!" << endl;
+        cout << "Stack Underflow! Nothing to pop!" << endl;
         return "";
     }
-    return stackArray[top--];
+    else
+        return stackArray[top--];
 }
 
 Element Stack::peek() {
 
+    if (top == -1) {
+        cout << "Stack Underflow!" << endl;
+        return "";
+    }
+    Element temp = pop();
+    push(temp);
+    return temp;
+
 }
 
 void Stack::view() {
-    
+
+    if(top == -1) {
+        cout << "TOP -> BOTTOM" << endl;
+        return;
+    }
+
+    ElementPtr tempArray = new (std::nothrow) Element[STACK_SIZE];
+    int tempTop = 0;
+
+    while(top != -1) {
+        tempArray[tempTop++] = pop();
+    }
+
+    cout << "TOP -> ";
+
+    for(int i = 0; i < tempTop; i++) {
+        cout << tempArray[i] << " -> ";
+        push(tempArray[i]);
+    }
+
+    cout << "BOTTOM" << endl;
+
+    delete[] tempArray;
+
 }
 
