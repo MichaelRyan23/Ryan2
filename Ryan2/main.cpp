@@ -27,7 +27,7 @@ int main() {
 
     stack1.push("Class");
     stack1.push("This");
-    stack1.push("Fuck");
+    stack1.push("I love");
     stack1.view();
 
     stack1.push("Guy");
