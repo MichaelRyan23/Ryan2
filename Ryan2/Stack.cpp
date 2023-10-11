@@ -196,4 +196,3 @@ void Stack::view() {
     }
 
 }
-
